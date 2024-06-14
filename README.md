@@ -46,6 +46,8 @@ Optionally include a few steps how users can set up the service.
 
 Some code examples, make it clear how to use the package
 
+PUBLISH THE CONFIG WITH php artisan vendor:publish --provider="JohnDoe\BlogPackage\BlogPackageServiceProvider" --tag="config"
+
 ### Available Message methods
 
 A list of all available options
