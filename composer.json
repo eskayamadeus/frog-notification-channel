@@ -1,6 +1,6 @@
 {
     "name": "eskayamadeus/frog-notification-channel",
-    "version": "1.0.0-beta.1",
+    "version": "1.0.0-beta.2",
     "description": "This channel allows you to send notifications via the Frog API (currently v3) provided by Wigal.",
     "homepage": "https://github.com/eskayamadeus/frog-notification-channel",
     "type": "library",
