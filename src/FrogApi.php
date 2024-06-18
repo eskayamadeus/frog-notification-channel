@@ -3,13 +3,11 @@
 namespace EskayAmadeus\FrogNotificationChannel;
 
 use EskayAmadeus\FrogNotificationChannel\Exceptions\CouldNotSendNotification;
-use Illuminate\Notifications\Notification;
 use Exception;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Http;
 
-// TODO extract API into a different package in order to have multiple other endpoints we can use
 class FrogApi
 {
     public function __construct()
@@ -22,7 +20,7 @@ class FrogApi
         try {
             $baseUrl = config('frog-notification.base_url');
 
-            $response = Http::withHeaders([
+            Http::withHeaders([
                     'API-KEY' => config('frog-notification.api_key'),
                     'USERNAME' => config('frog-notification.username')
                 ])
@@ -40,13 +38,6 @@ class FrogApi
                         ]
                     ]
                 );
-
-            logger(json_encode($response->body()));
-
-            // TODO for this app only, subtract from sms_credit when tihs class is called
-            // count the number of destinations to know how many credits to subtract
-            // $this->getSchool()->smsCredit()->
-            // FrogSmsSent::dispatch($this->getSchool());
 
             return true;
         } catch (ClientException $e) {
