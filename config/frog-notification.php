@@ -16,5 +16,8 @@ return [
     'development_mode' => env('FROG_DEVELOPMENT_MODE'),
 
     // Base URL for FROG without ending slash
-    'base_url' => env('FROG_BASE_URL', 'https://frogapi.wigal.com.gh/api/v3')
+    'base_url' => env('FROG_BASE_URL', 'https://frogapi.wigal.com.gh/api/v3'),
+
+    // pretend to send messages. Useful for development
+    'dry_run' => env('FROG_DRY_RUN', false)
 ];

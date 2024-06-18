@@ -12,8 +12,9 @@ class FrogChannel
     protected int $minCharacterCount = 2;
     protected int $maxCharacterCount = 100;
     protected FrogMessage $frogMessage;
+    protected FrogApi $frogClient;
 
-    public function __construct(protected FrogApi $frogClient)
+    public function __construct()
     {
         // Initialisation code here
     }
@@ -42,6 +43,13 @@ class FrogChannel
 
         if ($strLength < $this->minCharacterCount || $strLength > $this->maxCharacterCount) {
             throw CouldNotSendNotification::invalidContentLengthError($this->minCharacterCount, $this->maxCharacterCount);
+        }
+
+        if (config('frog-notification.dry_run')) {
+            // do not send
+            sleep(3);
+            logger('simulating message sender');
+            return true;
         }
 
         // use debug phone number when in development
