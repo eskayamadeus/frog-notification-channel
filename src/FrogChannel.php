@@ -45,6 +45,7 @@ class FrogChannel
             throw CouldNotSendNotification::invalidContentLengthError($this->minCharacterCount, $this->maxCharacterCount);
         }
 
+        logger(config('frog-notification.dry_run'));
         if (config('frog-notification.dry_run')) {
             // do not send
             sleep(3);
